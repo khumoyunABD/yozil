@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "82700180448",
+    "project_id": "yozil-uz",
+    "storage_bucket": "yozil-uz.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82700180448:android:a6e58655dfef6d0252e985",
+        "android_client_info": {
+          "package_name": "uz.yozil.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBevG_ceVAhS_bNehXX1fsBeFpT957M6CQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -19,19 +19,21 @@ class AppTheme {
 
   ///new colors
 
-  static ThemeData lightTheme = FlexThemeData.light(
-    colors: schemeColor,
-    surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-    blendLevel: 9,
-    subThemesData: const FlexSubThemesData(
-      blendOnLevel: 10,
-      blendTextTheme: true,
-      useTextTheme: true,
-    ),
-  );
+  // static ThemeData lightTheme = FlexThemeData.light(
+  //   //colors: schemeColor,
+  //   scheme: FlexScheme.tealM3,
+  //   surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+  //   blendLevel: 9,
+  //   subThemesData: const FlexSubThemesData(
+  //     blendOnLevel: 10,
+  //     blendTextTheme: true,
+  //     useTextTheme: true,
+  //   ),
+  // );
 
   static ThemeData darkTheme = FlexThemeData.dark(
-    colors: schemeColorDark,
+    //colors: schemeColorDark,
+    scheme: FlexScheme.blueWhale,
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     blendLevel: 15,
     subThemesData: const FlexSubThemesData(

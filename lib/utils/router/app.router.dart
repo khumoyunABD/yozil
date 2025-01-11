@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yozil/presentation/presentation.dart';
+import 'package:yozil/shared/shared.dart';
 
 abstract class ScreenPath {
   static const String initialRoute = '/';
+  static const String initialCheck = '/initial_check';
+  static const String serviceSelector = '/service_selector';
   static const String splash = '/splash';
   static const String signIn = '/signIn';
   static const String signUp = '/signUp';
   static const String verifyPhone = '/verify_phone';
   static const String home = '/home';
+  static const String explore = '/explore';
+  static const String appointments = '/appointments';
   static const String bookingHistory = '/booking_history';
   static const String profile = '/profile';
   static const String shopDetails = '/shop_details';
@@ -27,7 +32,7 @@ class AppRouter {
   AppRouter() {
     goRouter = GoRouter(
       //initialLocation: ScreenPath.splash,
-      initialLocation: ScreenPath.home,
+      initialLocation: ScreenPath.initialCheck,
       debugLogDiagnostics: true,
       navigatorKey: _rootNavigatorKey,
       routes: _routes,
@@ -42,6 +47,30 @@ class AppRouter {
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const SplashPage(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: ScreenPath.initialCheck,
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const InitialCheckPage(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: ScreenPath.serviceSelector,
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const ServiceSelectorPage(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             FadeTransition(
           opacity: animation,
@@ -97,6 +126,31 @@ class AppRouter {
         ),
       ),
     ),
+    //explore
+    GoRoute(
+      path: ScreenPath.explore,
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const ExplorePage(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: ScreenPath.appointments,
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const AppointmentsPage(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+      ),
+    ),
     GoRoute(
       path: ScreenPath.bookingHistory,
       pageBuilder: (context, state) => CustomTransitionPage<void>(
@@ -113,7 +167,7 @@ class AppRouter {
       path: ScreenPath.profile,
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
-        child: const UserProfilePage(),
+        child: const ProfilePage(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             FadeTransition(
           opacity: animation,

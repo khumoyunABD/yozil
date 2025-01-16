@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yozil/shared/shared.dart';
+import 'package:yozil/presentation/presentation.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

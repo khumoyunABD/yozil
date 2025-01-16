@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'utils/utils.dart';
+import 'package:yozil/core/core.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

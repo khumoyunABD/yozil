@@ -3,7 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:yozil/utils/utils.dart';
+import 'package:yozil/core/core.dart';
+import 'package:yozil/presentation/presentation.dart';
 
 class ServiceSelectorPage extends StatelessWidget {
   const ServiceSelectorPage({super.key});
@@ -25,7 +26,7 @@ class ServiceSelectorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(149, 97, 100, 101),
+      //backgroundColor: const Color.fromARGB(149, 97, 100, 101),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -51,7 +52,7 @@ class ServiceSelectorPage extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      '𝒀𝒐𝒛𝒊𝒍 siz yoqtirgan xizmatlarni',
+                      '$appName siz yoqtirgan xizmatlarni',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

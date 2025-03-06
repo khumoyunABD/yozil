@@ -20,20 +20,15 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  String get userType => throw _privateConstructorUsedError;
+  bool get isPremium => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get gender => throw _privateConstructorUsedError;
-  String? get profileImage => throw _privateConstructorUsedError;
-  DateTime? get birthDate => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  Address? get address => throw _privateConstructorUsedError;
-  List<String> get favoriteShops => throw _privateConstructorUsedError;
-  bool get isEmailVerified => throw _privateConstructorUsedError;
-  bool get isPhoneVerified => throw _privateConstructorUsedError;
-  DateTime? get lastLoginAt => throw _privateConstructorUsedError;
-  String? get deviceToken => throw _privateConstructorUsedError;
+  String? get businessName => throw _privateConstructorUsedError;
+  String? get businessDescription => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,22 +45,15 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {String? id,
+      {String id,
       String email,
+      String name,
+      DateTime createdAt,
+      String userType,
+      bool isPremium,
       String? phoneNumber,
-      String? name,
-      String? gender,
-      String? profileImage,
-      DateTime? birthDate,
-      DateTime? createdAt,
-      Address? address,
-      List<String> favoriteShops,
-      bool isEmailVerified,
-      bool isPhoneVerified,
-      DateTime? lastLoginAt,
-      String? deviceToken});
-
-  $AddressCopyWith<$Res>? get address;
+      String? businessName,
+      String? businessDescription});
 }
 
 /// @nodoc
@@ -83,93 +71,54 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? email = null,
+    Object? name = null,
+    Object? createdAt = null,
+    Object? userType = null,
+    Object? isPremium = null,
     Object? phoneNumber = freezed,
-    Object? name = freezed,
-    Object? gender = freezed,
-    Object? profileImage = freezed,
-    Object? birthDate = freezed,
-    Object? createdAt = freezed,
-    Object? address = freezed,
-    Object? favoriteShops = null,
-    Object? isEmailVerified = null,
-    Object? isPhoneVerified = null,
-    Object? lastLoginAt = freezed,
-    Object? deviceToken = freezed,
+    Object? businessName = freezed,
+    Object? businessDescription = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      userType: null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as String,
+      isPremium: null == isPremium
+          ? _value.isPremium
+          : isPremium // ignore: cast_nullable_to_non_nullable
+              as bool,
       phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      businessName: freezed == businessName
+          ? _value.businessName
+          : businessName // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileImage: freezed == profileImage
-          ? _value.profileImage
-          : profileImage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      birthDate: freezed == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
-      favoriteShops: null == favoriteShops
-          ? _value.favoriteShops
-          : favoriteShops // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      isEmailVerified: null == isEmailVerified
-          ? _value.isEmailVerified
-          : isEmailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isPhoneVerified: null == isPhoneVerified
-          ? _value.isPhoneVerified
-          : isPhoneVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastLoginAt: freezed == lastLoginAt
-          ? _value.lastLoginAt
-          : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      deviceToken: freezed == deviceToken
-          ? _value.deviceToken
-          : deviceToken // ignore: cast_nullable_to_non_nullable
+      businessDescription: freezed == businessDescription
+          ? _value.businessDescription
+          : businessDescription // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
-  }
-
-  /// Create a copy of User
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressCopyWith<$Res>? get address {
-    if (_value.address == null) {
-      return null;
-    }
-
-    return $AddressCopyWith<$Res>(_value.address!, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
   }
 }
 
@@ -181,23 +130,15 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? id,
+      {String id,
       String email,
+      String name,
+      DateTime createdAt,
+      String userType,
+      bool isPremium,
       String? phoneNumber,
-      String? name,
-      String? gender,
-      String? profileImage,
-      DateTime? birthDate,
-      DateTime? createdAt,
-      Address? address,
-      List<String> favoriteShops,
-      bool isEmailVerified,
-      bool isPhoneVerified,
-      DateTime? lastLoginAt,
-      String? deviceToken});
-
-  @override
-  $AddressCopyWith<$Res>? get address;
+      String? businessName,
+      String? businessDescription});
 }
 
 /// @nodoc
@@ -212,77 +153,52 @@ class __$$UserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? email = null,
+    Object? name = null,
+    Object? createdAt = null,
+    Object? userType = null,
+    Object? isPremium = null,
     Object? phoneNumber = freezed,
-    Object? name = freezed,
-    Object? gender = freezed,
-    Object? profileImage = freezed,
-    Object? birthDate = freezed,
-    Object? createdAt = freezed,
-    Object? address = freezed,
-    Object? favoriteShops = null,
-    Object? isEmailVerified = null,
-    Object? isPhoneVerified = null,
-    Object? lastLoginAt = freezed,
-    Object? deviceToken = freezed,
+    Object? businessName = freezed,
+    Object? businessDescription = freezed,
   }) {
     return _then(_$UserImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      userType: null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as String,
+      isPremium: null == isPremium
+          ? _value.isPremium
+          : isPremium // ignore: cast_nullable_to_non_nullable
+              as bool,
       phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      businessName: freezed == businessName
+          ? _value.businessName
+          : businessName // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileImage: freezed == profileImage
-          ? _value.profileImage
-          : profileImage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      birthDate: freezed == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
-      favoriteShops: null == favoriteShops
-          ? _value._favoriteShops
-          : favoriteShops // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      isEmailVerified: null == isEmailVerified
-          ? _value.isEmailVerified
-          : isEmailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isPhoneVerified: null == isPhoneVerified
-          ? _value.isPhoneVerified
-          : isPhoneVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastLoginAt: freezed == lastLoginAt
-          ? _value.lastLoginAt
-          : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      deviceToken: freezed == deviceToken
-          ? _value.deviceToken
-          : deviceToken // ignore: cast_nullable_to_non_nullable
+      businessDescription: freezed == businessDescription
+          ? _value.businessDescription
+          : businessDescription // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -291,67 +207,44 @@ class __$$UserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserImpl implements _User {
-  _$UserImpl(
-      {this.id,
+  const _$UserImpl(
+      {required this.id,
       required this.email,
+      required this.name,
+      required this.createdAt,
+      this.userType = 'customer',
+      this.isPremium = false,
       this.phoneNumber,
-      this.name,
-      this.gender,
-      this.profileImage,
-      this.birthDate,
-      this.createdAt,
-      this.address,
-      final List<String> favoriteShops = const [],
-      this.isEmailVerified = false,
-      this.isPhoneVerified = false,
-      this.lastLoginAt,
-      this.deviceToken})
-      : _favoriteShops = favoriteShops;
+      this.businessName,
+      this.businessDescription});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
 
   @override
-  final String? id;
+  final String id;
   @override
   final String email;
   @override
+  final String name;
+  @override
+  final DateTime createdAt;
+  @override
+  @JsonKey()
+  final String userType;
+  @override
+  @JsonKey()
+  final bool isPremium;
+  @override
   final String? phoneNumber;
   @override
-  final String? name;
+  final String? businessName;
   @override
-  final String? gender;
-  @override
-  final String? profileImage;
-  @override
-  final DateTime? birthDate;
-  @override
-  final DateTime? createdAt;
-  @override
-  final Address? address;
-  final List<String> _favoriteShops;
-  @override
-  @JsonKey()
-  List<String> get favoriteShops {
-    if (_favoriteShops is EqualUnmodifiableListView) return _favoriteShops;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_favoriteShops);
-  }
-
-  @override
-  @JsonKey()
-  final bool isEmailVerified;
-  @override
-  @JsonKey()
-  final bool isPhoneVerified;
-  @override
-  final DateTime? lastLoginAt;
-  @override
-  final String? deviceToken;
+  final String? businessDescription;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, phoneNumber: $phoneNumber, name: $name, gender: $gender, profileImage: $profileImage, birthDate: $birthDate, createdAt: $createdAt, address: $address, favoriteShops: $favoriteShops, isEmailVerified: $isEmailVerified, isPhoneVerified: $isPhoneVerified, lastLoginAt: $lastLoginAt, deviceToken: $deviceToken)';
+    return 'User(id: $id, email: $email, name: $name, createdAt: $createdAt, userType: $userType, isPremium: $isPremium, phoneNumber: $phoneNumber, businessName: $businessName, businessDescription: $businessDescription)';
   }
 
   @override
@@ -361,47 +254,25 @@ class _$UserImpl implements _User {
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.profileImage, profileImage) ||
-                other.profileImage == profileImage) &&
-            (identical(other.birthDate, birthDate) ||
-                other.birthDate == birthDate) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.address, address) || other.address == address) &&
-            const DeepCollectionEquality()
-                .equals(other._favoriteShops, _favoriteShops) &&
-            (identical(other.isEmailVerified, isEmailVerified) ||
-                other.isEmailVerified == isEmailVerified) &&
-            (identical(other.isPhoneVerified, isPhoneVerified) ||
-                other.isPhoneVerified == isPhoneVerified) &&
-            (identical(other.lastLoginAt, lastLoginAt) ||
-                other.lastLoginAt == lastLoginAt) &&
-            (identical(other.deviceToken, deviceToken) ||
-                other.deviceToken == deviceToken));
+            (identical(other.userType, userType) ||
+                other.userType == userType) &&
+            (identical(other.isPremium, isPremium) ||
+                other.isPremium == isPremium) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.businessName, businessName) ||
+                other.businessName == businessName) &&
+            (identical(other.businessDescription, businessDescription) ||
+                other.businessDescription == businessDescription));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      email,
-      phoneNumber,
-      name,
-      gender,
-      profileImage,
-      birthDate,
-      createdAt,
-      address,
-      const DeepCollectionEquality().hash(_favoriteShops),
-      isEmailVerified,
-      isPhoneVerified,
-      lastLoginAt,
-      deviceToken);
+  int get hashCode => Object.hash(runtimeType, id, email, name, createdAt,
+      userType, isPremium, phoneNumber, businessName, businessDescription);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -420,52 +291,37 @@ class _$UserImpl implements _User {
 }
 
 abstract class _User implements User {
-  factory _User(
-      {final String? id,
+  const factory _User(
+      {required final String id,
       required final String email,
+      required final String name,
+      required final DateTime createdAt,
+      final String userType,
+      final bool isPremium,
       final String? phoneNumber,
-      final String? name,
-      final String? gender,
-      final String? profileImage,
-      final DateTime? birthDate,
-      final DateTime? createdAt,
-      final Address? address,
-      final List<String> favoriteShops,
-      final bool isEmailVerified,
-      final bool isPhoneVerified,
-      final DateTime? lastLoginAt,
-      final String? deviceToken}) = _$UserImpl;
+      final String? businessName,
+      final String? businessDescription}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
-  String? get id;
+  String get id;
   @override
   String get email;
   @override
+  String get name;
+  @override
+  DateTime get createdAt;
+  @override
+  String get userType;
+  @override
+  bool get isPremium;
+  @override
   String? get phoneNumber;
   @override
-  String? get name;
+  String? get businessName;
   @override
-  String? get gender;
-  @override
-  String? get profileImage;
-  @override
-  DateTime? get birthDate;
-  @override
-  DateTime? get createdAt;
-  @override
-  Address? get address;
-  @override
-  List<String> get favoriteShops;
-  @override
-  bool get isEmailVerified;
-  @override
-  bool get isPhoneVerified;
-  @override
-  DateTime? get lastLoginAt;
-  @override
-  String? get deviceToken;
+  String? get businessDescription;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

@@ -31,7 +31,7 @@ class AppRouter {
   AppRouter() {
     goRouter = GoRouter(
       //initialLocation: ScreenPath.splash,
-      initialLocation: ScreenPath.initialCheck,
+      initialLocation: ScreenPath.signIn,
       debugLogDiagnostics: true,
       navigatorKey: _rootNavigatorKey,
       routes: _routes,

@@ -8,6 +8,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
   AuthRepositoryImpl(this.remoteSource);
 
+  // Add this getter here
+  Stream<User?> get authStateChanges => remoteSource.authStateChanges();
+
   @override
   Future<Either<Failure, User>> login(String email, String password) async {
     try {
@@ -24,12 +27,11 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, User>> register(
-    String email,
-    String password,
-    String name,
-  ) async {
+      String email, String password, String name,
+      {String userType = 'customer'}) async {
     try {
-      final user = await remoteSource.register(email, password, name);
+      final user = await remoteSource.register(email, password, name,
+          userType: userType);
       return Right(user);
     } on EmailAlreadyInUseException {
       return Left(const Failure.emailAlreadyInUse());

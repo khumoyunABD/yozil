@@ -39,58 +39,103 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _checkAuthStatus(Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
-    final isLoggedInResult = await _isLoggedInUsecase();
+    try {
+      final isLoggedInResult = await _isLoggedInUsecase();
 
-    isLoggedInResult.fold(
-      (failure) => emit(AuthState.error(failure.message)),
-      (isLoggedIn) async {
-        if (isLoggedIn) {
-          final userResult = await _getCurrentUserUsecase();
-          userResult.fold(
-            (failure) => emit(AuthState.error(failure.message)),
-            (user) => emit(AuthState.authenticated(user)),
-          );
-        } else {
-          emit(const AuthState.unauthenticated());
-        }
-      },
-    );
+      await isLoggedInResult.fold(
+        (failure) {
+          // Handle failure from isLoggedIn check
+          emit(AuthState.error(failure.message));
+        },
+        (isLoggedIn) async {
+          if (isLoggedIn) {
+            final userResult = await _getCurrentUserUsecase();
+            userResult.fold(
+              (failure) {
+                // Handle failure from getCurrentUser
+                emit(AuthState.error(failure.message));
+              },
+              (user) {
+                if (user != null) {
+                  // User is authenticated
+                  emit(AuthState.authenticated(user));
+                } else {
+                  // No user found despite isLoggedIn being true
+                  emit(const AuthState.unauthenticated());
+                }
+              },
+            );
+          } else {
+            // User is not logged in
+            emit(const AuthState.unauthenticated());
+          }
+        },
+      );
+    } catch (e) {
+      // Catch any unexpected errors
+      emit(AuthState.error(e.toString()));
+    }
   }
 
   Future<void> _login(_Login event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
-    final result = await _loginUsecase(event.email, event.password);
+    try {
+      final result = await _loginUsecase(event.email, event.password);
 
-    result.fold(
-      (failure) => emit(AuthState.error(failure.message)),
-      (user) => emit(AuthState.authenticated(user)),
-    );
+      result.fold(
+        (failure) => emit(AuthState.error(failure.message)),
+        (user) {
+          if (user != null) {
+            emit(AuthState.authenticated(user));
+          } else {
+            emit(const AuthState.error("Login failed: User data is null"));
+          }
+        },
+      );
+    } catch (e) {
+      emit(AuthState.error(e.toString()));
+    }
   }
 
   Future<void> _register(_Register event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
-    final result = await _registerUsecase(
-      event.email,
-      event.password,
-      event.name,
-    );
+    try {
+      final result = await _registerUsecase(
+        event.email,
+        event.password,
+        event.name,
+      );
 
-    result.fold(
-      (failure) => emit(AuthState.error(failure.message)),
-      (user) => emit(AuthState.authenticated(user)),
-    );
+      result.fold(
+        (failure) => emit(AuthState.error(failure.message)),
+        (user) {
+          if (user != null) {
+            emit(AuthState.authenticated(user));
+          } else {
+            emit(const AuthState.error(
+                "Registration failed: User data is null"));
+          }
+        },
+      );
+    } catch (e) {
+      emit(AuthState.error(e.toString()));
+    }
   }
 
   Future<void> _logout(Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
-    final result = await _logoutUsecase();
+    try {
+      final result = await _logoutUsecase();
 
-    result.fold(
-      (failure) => emit(AuthState.error(failure.message)),
-      (_) => emit(const AuthState.unauthenticated()),
-    );
+      result.fold(
+        (failure) => emit(AuthState.error(failure.message)),
+        (_) => emit(const AuthState.unauthenticated()),
+      );
+    } catch (e) {
+      emit(AuthState.error(e.toString()));
+    }
   }
 }

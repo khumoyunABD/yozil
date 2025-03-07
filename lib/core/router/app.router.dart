@@ -22,6 +22,7 @@ abstract class ScreenPath {
   static const String appLanguage = '/app_language';
   static const String shopContacts = '/shopContacts';
   static const String appInfo = '/app_info';
+  static const String passwordVerification = '/password_verification';
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -259,6 +260,20 @@ class AppRouter {
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const AppInfoPage(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: ScreenPath.passwordVerification,
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: PasswordVerificationPage(
+          phoneNumber: state.extra as String,
+        ),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             FadeTransition(
           opacity: animation,

@@ -4,9 +4,8 @@ import 'package:yozil/data/data.dart';
 import 'package:yozil/domain/domain.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
-  final AuthRemoteSource remoteSource;
-
   AuthRepositoryImpl(this.remoteSource);
+  final AuthRemoteSource remoteSource;
 
   // Add this getter here
   Stream<User?> get authStateChanges => remoteSource.authStateChanges();
@@ -52,16 +51,22 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  @override
+  @override 
   Future<Either<Failure, User>> getCurrentUser() async {
     try {
       final user = await remoteSource.getCurrentUser();
+
       if (user != null) {
         return Right(user);
+      } else {
+        return Left(Failure.unauthenticated());
       }
-      return Left(const Failure.unauthenticated());
+    } on ServerException {
+      return Left(ServerFailure('Server error occurred'));
+    } on InvalidCredentialsException {
+      return Left(InvalidCredentialsFailure('Invalid Credentials'));
     } catch (e) {
-      return Left(const Failure.unexpected());
+      return Left(UnexpectedFailure(e.toString()));
     }
   }
 

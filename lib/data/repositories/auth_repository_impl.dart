@@ -11,9 +11,10 @@ class AuthRepositoryImpl implements AuthRepository {
   Stream<User?> get authStateChanges => remoteSource.authStateChanges();
 
   @override
-  Future<Either<Failure, User>> login(String email, String password) async {
+  Future<Either<Failure, User>> login(
+      String identifier, String password) async {
     try {
-      final user = await remoteSource.login(email, password);
+      final user = await remoteSource.login(identifier, password);
       return Right(user);
     } on InvalidCredentialsException {
       return Left(const Failure.invalidCredentials());
@@ -26,18 +27,27 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, User>> register(
-      String email, String password, String name,
+      String? email, String name, String password, String? phoneNumber,
       {String userType = 'customer'}) async {
     try {
-      final user = await remoteSource.register(email, password, name,
-          userType: userType);
+      final user = await remoteSource.register(
+        email,
+        name,
+        password,
+        phoneNumber,
+        userType: userType,
+      );
       return Right(user);
     } on EmailAlreadyInUseException {
-      return Left(const Failure.emailAlreadyInUse());
+      return Left(EmailAlreadyInUseFailure());
+    } on PhoneNumberAlreadyInUseException {
+      return Left(PhoneNumberAlreadyInUseFailure());
+    } on ValidationException catch (e) {
+      return Left(ValidationFailure(e.message));
     } on ServerException {
-      return Left(const Failure.server());
-    } catch (e) {
-      return Left(const Failure.unexpected());
+      return Left(ServerFailure());
+    } on Exception catch (e) {
+      return Left(UnexpectedFailure(e.toString()));
     }
   }
 
@@ -46,12 +56,14 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await remoteSource.logout();
       return const Right(null);
-    } catch (e) {
-      return Left(const Failure.server());
+    } on ServerException {
+      return Left(ServerFailure());
+    } on Exception catch (e) {
+      return Left(UnexpectedFailure(e.toString()));
     }
   }
 
-  @override 
+  @override
   Future<Either<Failure, User>> getCurrentUser() async {
     try {
       final user = await remoteSource.getCurrentUser();
@@ -73,10 +85,37 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<Failure, bool>> isLoggedIn() async {
     try {
-      final user = await remoteSource.getCurrentUser();
-      return Right(user != null);
-    } catch (e) {
-      return Left(const Failure.unexpected());
+      // First check if tokens exist in local storage
+      // final hasToken = _hasValidTokens();
+
+      // // If no tokens, user is definitely not logged in
+      // if (!hasToken) {
+      //   return const Right(false);
+      // }
+
+      // If we have tokens, try to get the current user to verify
+      // Only do this check if we have tokens to avoid unnecessary API calls
+      try {
+        final user = await remoteSource.getCurrentUser();
+        return Right(user != null);
+      } catch (e) {
+        // If API call fails, consider user not logged in
+        return const Right(false);
+      }
+    } on Exception catch (e) {
+      return Left(UnexpectedFailure(e.toString()));
     }
   }
+
+  // Helper method to check if tokens exist in local storage
+  // bool _hasValidTokens() {
+  //   final accessToken = sharedPreferences.getString(_accessTokenKey);
+  //   final refreshToken = sharedPreferences.getString(_refreshTokenKey);
+
+  //   // Only return true if both tokens exist
+  //   return accessToken != null &&
+  //       accessToken.isNotEmpty &&
+  //       refreshToken != null &&
+  //       refreshToken.isNotEmpty;
+  // }
 }

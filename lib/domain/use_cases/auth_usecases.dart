@@ -9,8 +9,8 @@ class LoginUsecase {
 
   LoginUsecase(this.repository);
 
-  Future<Either<Failure, User>> call(String email, String password) {
-    return repository.login(email, password);
+  Future<Either<Failure, User>> call(String identifier, String password) {
+    return repository.login(identifier, password);
   }
 }
 
@@ -21,8 +21,15 @@ class RegisterUsecase {
   RegisterUsecase(this.repository);
 
   Future<Either<Failure, User>> call(
-      String email, String password, String name) {
-    return repository.register(email, password, name);
+      String? email, String name, String password, String? phoneNumber,
+      {String userType = 'customer'}) {
+    return repository.register(
+      email,
+      name,
+      password,
+      phoneNumber,
+      userType: userType,
+    );
   }
 }
 

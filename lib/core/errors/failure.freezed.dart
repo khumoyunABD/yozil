@@ -26,6 +26,8 @@ mixin _$Failure {
     required TResult Function(String? message) unexpected,
     required TResult Function(String? message) emailAlreadyInUse,
     required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,6 +39,8 @@ mixin _$Failure {
     TResult? Function(String? message)? unexpected,
     TResult? Function(String? message)? emailAlreadyInUse,
     TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +52,8 @@ mixin _$Failure {
     TResult Function(String? message)? unexpected,
     TResult Function(String? message)? emailAlreadyInUse,
     TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +67,8 @@ mixin _$Failure {
     required TResult Function(UnexpectedFailure value) unexpected,
     required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
     required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +80,8 @@ mixin _$Failure {
     TResult? Function(UnexpectedFailure value)? unexpected,
     TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +93,8 @@ mixin _$Failure {
     TResult Function(UnexpectedFailure value)? unexpected,
     TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -204,6 +216,8 @@ class _$ServerFailureImpl implements ServerFailure {
     required TResult Function(String? message) unexpected,
     required TResult Function(String? message) emailAlreadyInUse,
     required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
   }) {
     return server(message);
   }
@@ -218,6 +232,8 @@ class _$ServerFailureImpl implements ServerFailure {
     TResult? Function(String? message)? unexpected,
     TResult? Function(String? message)? emailAlreadyInUse,
     TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
   }) {
     return server?.call(message);
   }
@@ -232,6 +248,8 @@ class _$ServerFailureImpl implements ServerFailure {
     TResult Function(String? message)? unexpected,
     TResult Function(String? message)? emailAlreadyInUse,
     TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -251,6 +269,8 @@ class _$ServerFailureImpl implements ServerFailure {
     required TResult Function(UnexpectedFailure value) unexpected,
     required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
     required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
   }) {
     return server(this);
   }
@@ -265,6 +285,8 @@ class _$ServerFailureImpl implements ServerFailure {
     TResult? Function(UnexpectedFailure value)? unexpected,
     TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
   }) {
     return server?.call(this);
   }
@@ -279,6 +301,8 @@ class _$ServerFailureImpl implements ServerFailure {
     TResult Function(UnexpectedFailure value)? unexpected,
     TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -379,6 +403,8 @@ class _$CacheFailureImpl implements CacheFailure {
     required TResult Function(String? message) unexpected,
     required TResult Function(String? message) emailAlreadyInUse,
     required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
   }) {
     return cache(message);
   }
@@ -393,6 +419,8 @@ class _$CacheFailureImpl implements CacheFailure {
     TResult? Function(String? message)? unexpected,
     TResult? Function(String? message)? emailAlreadyInUse,
     TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
   }) {
     return cache?.call(message);
   }
@@ -407,6 +435,8 @@ class _$CacheFailureImpl implements CacheFailure {
     TResult Function(String? message)? unexpected,
     TResult Function(String? message)? emailAlreadyInUse,
     TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
     required TResult orElse(),
   }) {
     if (cache != null) {
@@ -426,6 +456,8 @@ class _$CacheFailureImpl implements CacheFailure {
     required TResult Function(UnexpectedFailure value) unexpected,
     required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
     required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
   }) {
     return cache(this);
   }
@@ -440,6 +472,8 @@ class _$CacheFailureImpl implements CacheFailure {
     TResult? Function(UnexpectedFailure value)? unexpected,
     TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
   }) {
     return cache?.call(this);
   }
@@ -454,6 +488,8 @@ class _$CacheFailureImpl implements CacheFailure {
     TResult Function(UnexpectedFailure value)? unexpected,
     TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
     required TResult orElse(),
   }) {
     if (cache != null) {
@@ -555,6 +591,8 @@ class _$NetworkFailureImpl implements NetworkFailure {
     required TResult Function(String? message) unexpected,
     required TResult Function(String? message) emailAlreadyInUse,
     required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
   }) {
     return network(message);
   }
@@ -569,6 +607,8 @@ class _$NetworkFailureImpl implements NetworkFailure {
     TResult? Function(String? message)? unexpected,
     TResult? Function(String? message)? emailAlreadyInUse,
     TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
   }) {
     return network?.call(message);
   }
@@ -583,6 +623,8 @@ class _$NetworkFailureImpl implements NetworkFailure {
     TResult Function(String? message)? unexpected,
     TResult Function(String? message)? emailAlreadyInUse,
     TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -602,6 +644,8 @@ class _$NetworkFailureImpl implements NetworkFailure {
     required TResult Function(UnexpectedFailure value) unexpected,
     required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
     required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
   }) {
     return network(this);
   }
@@ -616,6 +660,8 @@ class _$NetworkFailureImpl implements NetworkFailure {
     TResult? Function(UnexpectedFailure value)? unexpected,
     TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
   }) {
     return network?.call(this);
   }
@@ -630,6 +676,8 @@ class _$NetworkFailureImpl implements NetworkFailure {
     TResult Function(UnexpectedFailure value)? unexpected,
     TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -733,6 +781,8 @@ class _$InvalidCredentialsFailureImpl implements InvalidCredentialsFailure {
     required TResult Function(String? message) unexpected,
     required TResult Function(String? message) emailAlreadyInUse,
     required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
   }) {
     return invalidCredentials(message);
   }
@@ -747,6 +797,8 @@ class _$InvalidCredentialsFailureImpl implements InvalidCredentialsFailure {
     TResult? Function(String? message)? unexpected,
     TResult? Function(String? message)? emailAlreadyInUse,
     TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
   }) {
     return invalidCredentials?.call(message);
   }
@@ -761,6 +813,8 @@ class _$InvalidCredentialsFailureImpl implements InvalidCredentialsFailure {
     TResult Function(String? message)? unexpected,
     TResult Function(String? message)? emailAlreadyInUse,
     TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -780,6 +834,8 @@ class _$InvalidCredentialsFailureImpl implements InvalidCredentialsFailure {
     required TResult Function(UnexpectedFailure value) unexpected,
     required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
     required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
   }) {
     return invalidCredentials(this);
   }
@@ -794,6 +850,8 @@ class _$InvalidCredentialsFailureImpl implements InvalidCredentialsFailure {
     TResult? Function(UnexpectedFailure value)? unexpected,
     TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
   }) {
     return invalidCredentials?.call(this);
   }
@@ -808,6 +866,8 @@ class _$InvalidCredentialsFailureImpl implements InvalidCredentialsFailure {
     TResult Function(UnexpectedFailure value)? unexpected,
     TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -910,6 +970,8 @@ class _$UnexpectedFailureImpl implements UnexpectedFailure {
     required TResult Function(String? message) unexpected,
     required TResult Function(String? message) emailAlreadyInUse,
     required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
   }) {
     return unexpected(message);
   }
@@ -924,6 +986,8 @@ class _$UnexpectedFailureImpl implements UnexpectedFailure {
     TResult? Function(String? message)? unexpected,
     TResult? Function(String? message)? emailAlreadyInUse,
     TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
   }) {
     return unexpected?.call(message);
   }
@@ -938,6 +1002,8 @@ class _$UnexpectedFailureImpl implements UnexpectedFailure {
     TResult Function(String? message)? unexpected,
     TResult Function(String? message)? emailAlreadyInUse,
     TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -957,6 +1023,8 @@ class _$UnexpectedFailureImpl implements UnexpectedFailure {
     required TResult Function(UnexpectedFailure value) unexpected,
     required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
     required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
   }) {
     return unexpected(this);
   }
@@ -971,6 +1039,8 @@ class _$UnexpectedFailureImpl implements UnexpectedFailure {
     TResult? Function(UnexpectedFailure value)? unexpected,
     TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
   }) {
     return unexpected?.call(this);
   }
@@ -985,6 +1055,8 @@ class _$UnexpectedFailureImpl implements UnexpectedFailure {
     TResult Function(UnexpectedFailure value)? unexpected,
     TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -1089,6 +1161,8 @@ class _$EmailAlreadyInUseFailureImpl implements EmailAlreadyInUseFailure {
     required TResult Function(String? message) unexpected,
     required TResult Function(String? message) emailAlreadyInUse,
     required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
   }) {
     return emailAlreadyInUse(message);
   }
@@ -1103,6 +1177,8 @@ class _$EmailAlreadyInUseFailureImpl implements EmailAlreadyInUseFailure {
     TResult? Function(String? message)? unexpected,
     TResult? Function(String? message)? emailAlreadyInUse,
     TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
   }) {
     return emailAlreadyInUse?.call(message);
   }
@@ -1117,6 +1193,8 @@ class _$EmailAlreadyInUseFailureImpl implements EmailAlreadyInUseFailure {
     TResult Function(String? message)? unexpected,
     TResult Function(String? message)? emailAlreadyInUse,
     TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -1136,6 +1214,8 @@ class _$EmailAlreadyInUseFailureImpl implements EmailAlreadyInUseFailure {
     required TResult Function(UnexpectedFailure value) unexpected,
     required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
     required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -1150,6 +1230,8 @@ class _$EmailAlreadyInUseFailureImpl implements EmailAlreadyInUseFailure {
     TResult? Function(UnexpectedFailure value)? unexpected,
     TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -1164,6 +1246,8 @@ class _$EmailAlreadyInUseFailureImpl implements EmailAlreadyInUseFailure {
     TResult Function(UnexpectedFailure value)? unexpected,
     TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -1268,6 +1352,8 @@ class _$UnauthenticatedFailureImpl implements UnauthenticatedFailure {
     required TResult Function(String? message) unexpected,
     required TResult Function(String? message) emailAlreadyInUse,
     required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
   }) {
     return unauthenticated(message);
   }
@@ -1282,6 +1368,8 @@ class _$UnauthenticatedFailureImpl implements UnauthenticatedFailure {
     TResult? Function(String? message)? unexpected,
     TResult? Function(String? message)? emailAlreadyInUse,
     TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
   }) {
     return unauthenticated?.call(message);
   }
@@ -1296,6 +1384,8 @@ class _$UnauthenticatedFailureImpl implements UnauthenticatedFailure {
     TResult Function(String? message)? unexpected,
     TResult Function(String? message)? emailAlreadyInUse,
     TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -1315,6 +1405,8 @@ class _$UnauthenticatedFailureImpl implements UnauthenticatedFailure {
     required TResult Function(UnexpectedFailure value) unexpected,
     required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
     required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
   }) {
     return unauthenticated(this);
   }
@@ -1329,6 +1421,8 @@ class _$UnauthenticatedFailureImpl implements UnauthenticatedFailure {
     TResult? Function(UnexpectedFailure value)? unexpected,
     TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
   }) {
     return unauthenticated?.call(this);
   }
@@ -1343,6 +1437,8 @@ class _$UnauthenticatedFailureImpl implements UnauthenticatedFailure {
     TResult Function(UnexpectedFailure value)? unexpected,
     TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -1364,5 +1460,388 @@ abstract class UnauthenticatedFailure implements Failure {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnauthenticatedFailureImplCopyWith<_$UnauthenticatedFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ValidationFailureImplCopyWith<$Res>
+    implements $FailureCopyWith<$Res> {
+  factory _$$ValidationFailureImplCopyWith(_$ValidationFailureImpl value,
+          $Res Function(_$ValidationFailureImpl) then) =
+      __$$ValidationFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$ValidationFailureImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$ValidationFailureImpl>
+    implements _$$ValidationFailureImplCopyWith<$Res> {
+  __$$ValidationFailureImplCopyWithImpl(_$ValidationFailureImpl _value,
+      $Res Function(_$ValidationFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$ValidationFailureImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ValidationFailureImpl implements ValidationFailure {
+  const _$ValidationFailureImpl([this.message]);
+
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'Failure.unvalidated(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ValidationFailureImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ValidationFailureImplCopyWith<_$ValidationFailureImpl> get copyWith =>
+      __$$ValidationFailureImplCopyWithImpl<_$ValidationFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cache,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) invalidCredentials,
+    required TResult Function(String? message) unexpected,
+    required TResult Function(String? message) emailAlreadyInUse,
+    required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
+  }) {
+    return unvalidated(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cache,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? invalidCredentials,
+    TResult? Function(String? message)? unexpected,
+    TResult? Function(String? message)? emailAlreadyInUse,
+    TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
+  }) {
+    return unvalidated?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cache,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? invalidCredentials,
+    TResult Function(String? message)? unexpected,
+    TResult Function(String? message)? emailAlreadyInUse,
+    TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
+    required TResult orElse(),
+  }) {
+    if (unvalidated != null) {
+      return unvalidated(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerFailure value) server,
+    required TResult Function(CacheFailure value) cache,
+    required TResult Function(NetworkFailure value) network,
+    required TResult Function(InvalidCredentialsFailure value)
+        invalidCredentials,
+    required TResult Function(UnexpectedFailure value) unexpected,
+    required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
+    required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
+  }) {
+    return unvalidated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ServerFailure value)? server,
+    TResult? Function(CacheFailure value)? cache,
+    TResult? Function(NetworkFailure value)? network,
+    TResult? Function(InvalidCredentialsFailure value)? invalidCredentials,
+    TResult? Function(UnexpectedFailure value)? unexpected,
+    TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
+    TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
+  }) {
+    return unvalidated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerFailure value)? server,
+    TResult Function(CacheFailure value)? cache,
+    TResult Function(NetworkFailure value)? network,
+    TResult Function(InvalidCredentialsFailure value)? invalidCredentials,
+    TResult Function(UnexpectedFailure value)? unexpected,
+    TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
+    TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
+    required TResult orElse(),
+  }) {
+    if (unvalidated != null) {
+      return unvalidated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ValidationFailure implements Failure {
+  const factory ValidationFailure([final String? message]) =
+      _$ValidationFailureImpl;
+
+  @override
+  String? get message;
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ValidationFailureImplCopyWith<_$ValidationFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PhoneNumberAlreadyInUseFailureImplCopyWith<$Res>
+    implements $FailureCopyWith<$Res> {
+  factory _$$PhoneNumberAlreadyInUseFailureImplCopyWith(
+          _$PhoneNumberAlreadyInUseFailureImpl value,
+          $Res Function(_$PhoneNumberAlreadyInUseFailureImpl) then) =
+      __$$PhoneNumberAlreadyInUseFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$PhoneNumberAlreadyInUseFailureImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$PhoneNumberAlreadyInUseFailureImpl>
+    implements _$$PhoneNumberAlreadyInUseFailureImplCopyWith<$Res> {
+  __$$PhoneNumberAlreadyInUseFailureImplCopyWithImpl(
+      _$PhoneNumberAlreadyInUseFailureImpl _value,
+      $Res Function(_$PhoneNumberAlreadyInUseFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$PhoneNumberAlreadyInUseFailureImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PhoneNumberAlreadyInUseFailureImpl
+    implements PhoneNumberAlreadyInUseFailure {
+  const _$PhoneNumberAlreadyInUseFailureImpl([this.message]);
+
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'Failure.phoneInUse(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PhoneNumberAlreadyInUseFailureImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PhoneNumberAlreadyInUseFailureImplCopyWith<
+          _$PhoneNumberAlreadyInUseFailureImpl>
+      get copyWith => __$$PhoneNumberAlreadyInUseFailureImplCopyWithImpl<
+          _$PhoneNumberAlreadyInUseFailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cache,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) invalidCredentials,
+    required TResult Function(String? message) unexpected,
+    required TResult Function(String? message) emailAlreadyInUse,
+    required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message) unvalidated,
+    required TResult Function(String? message) phoneInUse,
+  }) {
+    return phoneInUse(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cache,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? invalidCredentials,
+    TResult? Function(String? message)? unexpected,
+    TResult? Function(String? message)? emailAlreadyInUse,
+    TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message)? unvalidated,
+    TResult? Function(String? message)? phoneInUse,
+  }) {
+    return phoneInUse?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cache,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? invalidCredentials,
+    TResult Function(String? message)? unexpected,
+    TResult Function(String? message)? emailAlreadyInUse,
+    TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message)? unvalidated,
+    TResult Function(String? message)? phoneInUse,
+    required TResult orElse(),
+  }) {
+    if (phoneInUse != null) {
+      return phoneInUse(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerFailure value) server,
+    required TResult Function(CacheFailure value) cache,
+    required TResult Function(NetworkFailure value) network,
+    required TResult Function(InvalidCredentialsFailure value)
+        invalidCredentials,
+    required TResult Function(UnexpectedFailure value) unexpected,
+    required TResult Function(EmailAlreadyInUseFailure value) emailAlreadyInUse,
+    required TResult Function(UnauthenticatedFailure value) unauthenticated,
+    required TResult Function(ValidationFailure value) unvalidated,
+    required TResult Function(PhoneNumberAlreadyInUseFailure value) phoneInUse,
+  }) {
+    return phoneInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ServerFailure value)? server,
+    TResult? Function(CacheFailure value)? cache,
+    TResult? Function(NetworkFailure value)? network,
+    TResult? Function(InvalidCredentialsFailure value)? invalidCredentials,
+    TResult? Function(UnexpectedFailure value)? unexpected,
+    TResult? Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
+    TResult? Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult? Function(ValidationFailure value)? unvalidated,
+    TResult? Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
+  }) {
+    return phoneInUse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerFailure value)? server,
+    TResult Function(CacheFailure value)? cache,
+    TResult Function(NetworkFailure value)? network,
+    TResult Function(InvalidCredentialsFailure value)? invalidCredentials,
+    TResult Function(UnexpectedFailure value)? unexpected,
+    TResult Function(EmailAlreadyInUseFailure value)? emailAlreadyInUse,
+    TResult Function(UnauthenticatedFailure value)? unauthenticated,
+    TResult Function(ValidationFailure value)? unvalidated,
+    TResult Function(PhoneNumberAlreadyInUseFailure value)? phoneInUse,
+    required TResult orElse(),
+  }) {
+    if (phoneInUse != null) {
+      return phoneInUse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PhoneNumberAlreadyInUseFailure implements Failure {
+  const factory PhoneNumberAlreadyInUseFailure([final String? message]) =
+      _$PhoneNumberAlreadyInUseFailureImpl;
+
+  @override
+  String? get message;
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PhoneNumberAlreadyInUseFailureImplCopyWith<
+          _$PhoneNumberAlreadyInUseFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

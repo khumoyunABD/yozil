@@ -77,7 +77,7 @@ class _PasswordVerificationPageState extends State<PasswordVerificationPage> {
       // Dispatch register event with phone number as the "email"
       context.read<AuthBloc>().add(
             AuthEvent.register(
-              email: email,
+              identifier: email,
               password: _passwordController.text,
               name: _nameController.text.isNotEmpty
                   ? _nameController.text
@@ -94,7 +94,7 @@ class _PasswordVerificationPageState extends State<PasswordVerificationPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        state.maybeWhen( 
+        state.maybeWhen(
           authenticated: (_) {
             // User registered successfully, navigate to home screen
             context.go(ScreenPath.initialCheck);

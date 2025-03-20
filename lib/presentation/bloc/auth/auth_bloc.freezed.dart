@@ -19,8 +19,8 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkStatus,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String email, String password, String name)
+    required TResult Function(String identifier, String password) login,
+    required TResult Function(String identifier, String password, String name)
         register,
     required TResult Function() logout,
   }) =>
@@ -28,16 +28,17 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkStatus,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String email, String password, String name)? register,
+    TResult? Function(String identifier, String password)? login,
+    TResult? Function(String identifier, String password, String name)?
+        register,
     TResult? Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkStatus,
-    TResult Function(String email, String password)? login,
-    TResult Function(String email, String password, String name)? register,
+    TResult Function(String identifier, String password)? login,
+    TResult Function(String identifier, String password, String name)? register,
     TResult Function()? logout,
     required TResult orElse(),
   }) =>
@@ -131,8 +132,8 @@ class _$CheckStatusImpl implements _CheckStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkStatus,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String email, String password, String name)
+    required TResult Function(String identifier, String password) login,
+    required TResult Function(String identifier, String password, String name)
         register,
     required TResult Function() logout,
   }) {
@@ -143,8 +144,9 @@ class _$CheckStatusImpl implements _CheckStatus {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkStatus,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String email, String password, String name)? register,
+    TResult? Function(String identifier, String password)? login,
+    TResult? Function(String identifier, String password, String name)?
+        register,
     TResult? Function()? logout,
   }) {
     return checkStatus?.call();
@@ -154,8 +156,8 @@ class _$CheckStatusImpl implements _CheckStatus {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkStatus,
-    TResult Function(String email, String password)? login,
-    TResult Function(String email, String password, String name)? register,
+    TResult Function(String identifier, String password)? login,
+    TResult Function(String identifier, String password, String name)? register,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
@@ -213,7 +215,7 @@ abstract class _$$LoginImplCopyWith<$Res> {
           _$LoginImpl value, $Res Function(_$LoginImpl) then) =
       __$$LoginImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String identifier, String password});
 }
 
 /// @nodoc
@@ -229,13 +231,13 @@ class __$$LoginImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? identifier = null,
     Object? password = null,
   }) {
     return _then(_$LoginImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      identifier: null == identifier
+          ? _value.identifier
+          : identifier // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -248,16 +250,16 @@ class __$$LoginImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginImpl implements _Login {
-  const _$LoginImpl({required this.email, required this.password});
+  const _$LoginImpl({required this.identifier, required this.password});
 
   @override
-  final String email;
+  final String identifier;
   @override
   final String password;
 
   @override
   String toString() {
-    return 'AuthEvent.login(email: $email, password: $password)';
+    return 'AuthEvent.login(identifier: $identifier, password: $password)';
   }
 
   @override
@@ -265,13 +267,14 @@ class _$LoginImpl implements _Login {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginImpl &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.identifier, identifier) ||
+                other.identifier == identifier) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, identifier, password);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -285,36 +288,37 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkStatus,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String email, String password, String name)
+    required TResult Function(String identifier, String password) login,
+    required TResult Function(String identifier, String password, String name)
         register,
     required TResult Function() logout,
   }) {
-    return login(email, password);
+    return login(identifier, password);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkStatus,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String email, String password, String name)? register,
+    TResult? Function(String identifier, String password)? login,
+    TResult? Function(String identifier, String password, String name)?
+        register,
     TResult? Function()? logout,
   }) {
-    return login?.call(email, password);
+    return login?.call(identifier, password);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkStatus,
-    TResult Function(String email, String password)? login,
-    TResult Function(String email, String password, String name)? register,
+    TResult Function(String identifier, String password)? login,
+    TResult Function(String identifier, String password, String name)? register,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (login != null) {
-      return login(email, password);
+      return login(identifier, password);
     }
     return orElse();
   }
@@ -359,10 +363,10 @@ class _$LoginImpl implements _Login {
 
 abstract class _Login implements AuthEvent {
   const factory _Login(
-      {required final String email,
+      {required final String identifier,
       required final String password}) = _$LoginImpl;
 
-  String get email;
+  String get identifier;
   String get password;
 
   /// Create a copy of AuthEvent
@@ -378,7 +382,7 @@ abstract class _$$RegisterImplCopyWith<$Res> {
           _$RegisterImpl value, $Res Function(_$RegisterImpl) then) =
       __$$RegisterImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password, String name});
+  $Res call({String identifier, String password, String name});
 }
 
 /// @nodoc
@@ -394,14 +398,14 @@ class __$$RegisterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? identifier = null,
     Object? password = null,
     Object? name = null,
   }) {
     return _then(_$RegisterImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      identifier: null == identifier
+          ? _value.identifier
+          : identifier // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -419,10 +423,10 @@ class __$$RegisterImplCopyWithImpl<$Res>
 
 class _$RegisterImpl implements _Register {
   const _$RegisterImpl(
-      {required this.email, required this.password, required this.name});
+      {required this.identifier, required this.password, required this.name});
 
   @override
-  final String email;
+  final String identifier;
   @override
   final String password;
   @override
@@ -430,7 +434,7 @@ class _$RegisterImpl implements _Register {
 
   @override
   String toString() {
-    return 'AuthEvent.register(email: $email, password: $password, name: $name)';
+    return 'AuthEvent.register(identifier: $identifier, password: $password, name: $name)';
   }
 
   @override
@@ -438,14 +442,15 @@ class _$RegisterImpl implements _Register {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisterImpl &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.identifier, identifier) ||
+                other.identifier == identifier) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, name);
+  int get hashCode => Object.hash(runtimeType, identifier, password, name);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -459,36 +464,37 @@ class _$RegisterImpl implements _Register {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkStatus,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String email, String password, String name)
+    required TResult Function(String identifier, String password) login,
+    required TResult Function(String identifier, String password, String name)
         register,
     required TResult Function() logout,
   }) {
-    return register(email, password, name);
+    return register(identifier, password, name);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkStatus,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String email, String password, String name)? register,
+    TResult? Function(String identifier, String password)? login,
+    TResult? Function(String identifier, String password, String name)?
+        register,
     TResult? Function()? logout,
   }) {
-    return register?.call(email, password, name);
+    return register?.call(identifier, password, name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkStatus,
-    TResult Function(String email, String password)? login,
-    TResult Function(String email, String password, String name)? register,
+    TResult Function(String identifier, String password)? login,
+    TResult Function(String identifier, String password, String name)? register,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (register != null) {
-      return register(email, password, name);
+      return register(identifier, password, name);
     }
     return orElse();
   }
@@ -533,11 +539,11 @@ class _$RegisterImpl implements _Register {
 
 abstract class _Register implements AuthEvent {
   const factory _Register(
-      {required final String email,
+      {required final String identifier,
       required final String password,
       required final String name}) = _$RegisterImpl;
 
-  String get email;
+  String get identifier;
   String get password;
   String get name;
 
@@ -590,8 +596,8 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkStatus,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String email, String password, String name)
+    required TResult Function(String identifier, String password) login,
+    required TResult Function(String identifier, String password, String name)
         register,
     required TResult Function() logout,
   }) {
@@ -602,8 +608,9 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkStatus,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String email, String password, String name)? register,
+    TResult? Function(String identifier, String password)? login,
+    TResult? Function(String identifier, String password, String name)?
+        register,
     TResult? Function()? logout,
   }) {
     return logout?.call();
@@ -613,8 +620,8 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkStatus,
-    TResult Function(String email, String password)? login,
-    TResult Function(String email, String password, String name)? register,
+    TResult Function(String identifier, String password)? login,
+    TResult Function(String identifier, String password, String name)? register,
     TResult Function()? logout,
     required TResult orElse(),
   }) {

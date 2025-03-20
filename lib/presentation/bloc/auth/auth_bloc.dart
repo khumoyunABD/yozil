@@ -56,13 +56,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 emit(AuthState.error(failure.message));
               },
               (user) {
-                if (user != null) {
-                  // User is authenticated
-                  emit(AuthState.authenticated(user));
-                } else {
-                  // No user found despite isLoggedIn being true
-                  emit(const AuthState.unauthenticated());
-                }
+                // User is authenticated
+                emit(AuthState.authenticated(user));
               },
             );
           } else {
@@ -81,16 +76,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     try {
-      final result = await _loginUsecase(event.email, event.password);
+      final result = await _loginUsecase(event.identifier, event.password);
 
       result.fold(
         (failure) => emit(AuthState.error(failure.message)),
         (user) {
-          if (user != null) {
-            emit(AuthState.authenticated(user));
-          } else {
-            emit(const AuthState.error("Login failed: User data is null"));
-          }
+          emit(AuthState.authenticated(user));
         },
       );
     } catch (e) {
@@ -102,21 +93,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     try {
+      // Determine if the identifier is an email or phone number
+      String? email;
+      String? phoneNumber;
+
+      if (_isEmailAddress(event.identifier)) {
+        email = event.identifier;
+      } else {
+        phoneNumber = event.identifier;
+      }
+
       final result = await _registerUsecase(
-        event.email,
-        event.password,
+        email,
         event.name,
+        event.password,
+        phoneNumber,
       );
 
       result.fold(
         (failure) => emit(AuthState.error(failure.message)),
         (user) {
-          if (user != null) {
-            emit(AuthState.authenticated(user));
-          } else {
-            emit(const AuthState.error(
-                "Registration failed: User data is null"));
-          }
+          emit(AuthState.authenticated(user));
         },
       );
     } catch (e) {
@@ -137,5 +134,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } catch (e) {
       emit(AuthState.error(e.toString()));
     }
+  }
+
+  // Helper method to determine if string is an email address
+  bool _isEmailAddress(String value) {
+    // Simple email validation regex
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return emailRegex.hasMatch(value);
   }
 }

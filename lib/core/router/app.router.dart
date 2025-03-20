@@ -32,7 +32,7 @@ class AppRouter {
   AppRouter() {
     goRouter = GoRouter(
       //initialLocation: ScreenPath.splash,
-      initialLocation: ScreenPath.signIn,
+      initialLocation: ScreenPath.home,
       debugLogDiagnostics: true,
       navigatorKey: _rootNavigatorKey,
       routes: _routes,

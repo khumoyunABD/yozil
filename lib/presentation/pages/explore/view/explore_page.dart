@@ -18,10 +18,10 @@ class ExplorePage extends StatelessWidget {
               // Search Bar
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(8),
-                ),
+                // decoration: BoxDecoration(
+                //   color: Colors.grey[200],
+                //   borderRadius: BorderRadius.circular(8),
+                // ),
                 child: const TextField(
                   decoration: InputDecoration(
                     hintText: 'Search services or businesses',
@@ -38,10 +38,10 @@ class ExplorePage extends StatelessWidget {
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
+                      // decoration: BoxDecoration(
+                      //   color: Colors.grey[200],
+                      //   borderRadius: BorderRadius.circular(8),
+                      // ),
                       child: const Row(
                         children: [
                           Icon(Icons.location_on_outlined),
@@ -55,10 +55,10 @@ class ExplorePage extends StatelessWidget {
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
+                      // decoration: BoxDecoration(
+                      //   color: Colors.grey[200],
+                      //   borderRadius: BorderRadius.circular(8),
+                      // ),
                       child: const Row(
                         children: [
                           Icon(Icons.calendar_today),
@@ -93,10 +93,10 @@ class ExplorePage extends StatelessWidget {
                   Container(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                    // decoration: BoxDecoration(
+                    //   color: Colors.grey[200],
+                    //   borderRadius: BorderRadius.circular(20),
+                    // ),
                     child: const Row(
                       children: [
                         Icon(Icons.tune),
@@ -109,10 +109,10 @@ class ExplorePage extends StatelessWidget {
                   Container(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                    // decoration: BoxDecoration(
+                    //   color: Colors.grey[200],
+                    //   borderRadius: BorderRadius.circular(20),
+                    // ),
                     child: const Row(
                       children: [
                         Text('Sort by: Recommended'),
@@ -178,6 +178,7 @@ class ExplorePage extends StatelessWidget {
                 child: const Row(
                   children: [
                     Text('What affects the search results?'),
+                    SizedBox(width: 5),
                     Icon(Icons.info_outline, size: 16),
                   ],
                 ),
@@ -215,7 +216,7 @@ class ExplorePage extends StatelessWidget {
   Widget _buildServiceTypeChip(String label) {
     return Chip(
       label: Text(label),
-      backgroundColor: Colors.grey[200],
+      //backgroundColor: Colors.grey[200],
     );
   }
 

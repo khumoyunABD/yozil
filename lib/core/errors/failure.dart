@@ -15,4 +15,7 @@ class Failure with _$Failure {
       EmailAlreadyInUseFailure;
   const factory Failure.unauthenticated([String? message]) =
       UnauthenticatedFailure;
+  const factory Failure.unvalidated([String? message]) = ValidationFailure;
+  const factory Failure.phoneInUse([String? message]) =
+      PhoneNumberAlreadyInUseFailure;
 }

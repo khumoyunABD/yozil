@@ -20,8 +20,8 @@ Future<void> initializeDependencies() async {
   // Set up Dio
   final dio = Dio(BaseOptions(
     baseUrl: 'http://127.0.0.1:8000', // Change to your Django API URL
-    connectTimeout: const Duration(seconds: 5),
-    receiveTimeout: const Duration(seconds: 3),
+    connectTimeout: const Duration(seconds: 8),
+    receiveTimeout: const Duration(seconds: 8),
     contentType: 'application/json',
     responseType: ResponseType.json,
   ));

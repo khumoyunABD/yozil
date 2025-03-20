@@ -2,7 +2,8 @@ import 'package:yozil/data/data.dart';
 
 abstract class AuthRemoteSource {
   Future<User> login(String email, String password);
-  Future<User> register(String email, String password, String name,
+  Future<User> register(
+      String? email, String name, String password, String? phoneNumber,
       {String userType = 'customer'});
   Future<void> logout();
   Stream<User?> authStateChanges();

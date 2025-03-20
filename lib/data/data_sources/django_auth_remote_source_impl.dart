@@ -66,12 +66,15 @@ class DjangoAuthRemoteSourceImpl implements AuthRemoteSource {
   }
 
   @override
-  Future<User> login(String email, String password) async {
+  Future<User> login(String identifier, String password) async {
     try {
+      // Determine if the identifier is an email or phone number
+      final bool isEmail = _isEmailAddress(identifier);
+
       final response = await dio.post(
         '/api/auth/login/',
         data: {
-          'email': email,
+          isEmail ? 'email' : 'phone_number': identifier,
           'password': password,
         },
       );
@@ -85,7 +88,8 @@ class DjangoAuthRemoteSourceImpl implements AuthRemoteSource {
       // Create user object from response data
       final user = User(
         id: response.data['user_id'].toString(),
-        email: response.data['email'],
+        email: response.data['email'] ?? '',
+        phoneNumber: response.data['phone_number'] ?? '',
         name: response.data['username'],
         createdAt: DateTime.now(), // Adjust as needed
         userType: response.data['user_type'],
@@ -110,18 +114,33 @@ class DjangoAuthRemoteSourceImpl implements AuthRemoteSource {
   }
 
   @override
-  Future<User> register(String email, String password, String name,
+  Future<User> register(
+      String? email, String name, String password, String? phoneNumber,
       {String userType = 'customer'}) async {
+    // Validate that either email or phone number is provided
+    if (email == null && phoneNumber == null) {
+      throw ValidationException('Either email or phone number is required');
+    }
+
     try {
+      final Map<String, dynamic> registrationData = {
+        'username': name,
+        'password': password,
+        'user_type': userType,
+      };
+
+      // Add email or phone number to the request data
+      if (email != null) {
+        registrationData['email'] = email;
+      }
+
+      if (phoneNumber != null) {
+        registrationData['phone_number'] = phoneNumber;
+      }
+
       final response = await dio.post(
         '/api/auth/register/',
-        data: {
-          'email': email,
-          'username': name,
-          'password': password,
-          'password2': password,
-          'user_type': userType,
-        },
+        data: registrationData,
       );
 
       // Save tokens
@@ -136,7 +155,8 @@ class DjangoAuthRemoteSourceImpl implements AuthRemoteSource {
       // Create user object
       final user = User(
         id: userData['id'].toString(),
-        email: userData['email'],
+        email: userData['email'] ?? '',
+        phoneNumber: userData['phone_number'] ?? '',
         name: userData['username'],
         createdAt: DateTime.now(), // Adjust as needed
         userType: userData['user_type'],
@@ -153,10 +173,15 @@ class DjangoAuthRemoteSourceImpl implements AuthRemoteSource {
     } on DioException catch (e) {
       if (e.response?.statusCode == 400) {
         final responseData = e.response?.data;
-        if (responseData != null &&
-            responseData.containsKey('email') &&
-            responseData['email'][0].contains('already exists')) {
-          throw EmailAlreadyInUseException();
+        if (responseData != null) {
+          if (responseData.containsKey('email') &&
+              responseData['email'][0].contains('already exists')) {
+            throw EmailAlreadyInUseException();
+          }
+          if (responseData.containsKey('phone_number') &&
+              responseData['phone_number'][0].contains('already exists')) {
+            throw PhoneNumberAlreadyInUseException();
+          }
         }
       }
       throw ServerException();
@@ -219,6 +244,13 @@ class DjangoAuthRemoteSourceImpl implements AuthRemoteSource {
       await sharedPreferences.remove(_refreshTokenKey);
       return false;
     }
+  }
+
+  // Helper method to determine if string is an email address
+  bool _isEmailAddress(String value) {
+    // Simple email validation regex
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return emailRegex.hasMatch(value);
   }
 
   // Clean up resources

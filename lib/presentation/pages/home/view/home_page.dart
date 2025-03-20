@@ -194,7 +194,7 @@ class OfferCard extends StatelessWidget {
       width: 280,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
+        color: Colors.grey.shade100,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.1),
@@ -252,6 +252,7 @@ class OfferCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
+                    color: Colors.orange,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -281,7 +282,11 @@ class OfferCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Icon(Icons.thumb_up, size: 20),
+                    const Icon(
+                      Icons.thumb_up,
+                      size: 20,
+                      color: Colors.blue,
+                    ),
                   ],
                 ),
                 const SizedBox(height: 4),
